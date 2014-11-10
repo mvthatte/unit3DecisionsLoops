@@ -6,7 +6,7 @@ import info.gridworld.actor.Rock;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.BoundedGrid;
 import info.gridworld.grid.Location;
-
+import info.gridworld.actor.Actor;
 /**
  * Game of Life starter code. Demonstrates how to create and populate the game using the GridWorld framework.
  * Also demonstrates how to provide accessor methods to make the class testable by unit tests.
@@ -85,7 +85,7 @@ public class GameOfLife
      * @post    the world has been populated with a new grid containing the next generation
      * 
      */
-    private void createNextGeneration()
+    public void createNextGeneration()
     {
         /** You will need to read the documentation for the World, Grid, and Location classes
          *      in order to implement the Game of Life algorithm and leverage the GridWorld framework.
@@ -94,9 +94,26 @@ public class GameOfLife
         // create the grid, of the specified size, that contains Actors
         Grid<Actor> grid = world.getGrid();
         
-        if(bug1.getOccupiedAdjacentLocations >=3)
+        final int ROWS = grid.getNumRows();
+        final int COLS = grid.getNumCols();
+        
+        for(int row = 0; row < ROWS; row++)
         {
-            BoundedGrid.remove(loc1);
+            for(int col = 0; col < COLS; col++)
+            {
+                // in this example, an alive cell has a non-null actor and a dead cell has a null actor
+                Actor cell = this.getActor(row, col);
+                Location loc1 = new Location(row,col);
+                // if the cell at the current row and col should be alive, assert that the actor is not null
+                if(grid.getNeighbors(loc1).size <= 3)
+                {
+                    grid.remove(row,col);
+                }
+                else // else, the cell should be dead; assert that the actor is null
+                {
+                    assertNull("expected dead cell at (" + row + ", " + col + ")", cell);
+                }
+            }
         }
         
     }
