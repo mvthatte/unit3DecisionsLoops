@@ -1,6 +1,5 @@
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.Critter;
-import info.gridworld.actor.Bug;
 import info.gridworld.actor.ActorWorld;
 import info.gridworld.actor.Rock;
 import info.gridworld.grid.Grid;
@@ -64,17 +63,17 @@ public class GameOfLife
         Grid<Actor> grid = world.getGrid();
         
         // create and add rocks (a type of Actor) to the three intial locations
-        Bug bug1 = new Bug();
+        Critter critter1 = new Critter();
         Location loc1 = new Location(X1, Y1);
-        grid.put(loc1, bug1);
+        grid.put(loc1, critter1);
         
-        Bug bug2 = new Bug();
+        Rock rock2 = new Rock();
         Location loc2 = new Location(X2, Y2);
-        grid.put(loc2, bug2);
+        grid.put(loc2, rock2);
         
-        Bug bug3 = new Bug();
+        Rock rock3 = new Rock();
         Location loc3 = new Location(X3, Y3);
-        grid.put(loc3, bug3);
+        grid.put(loc3, rock3);
     }
 
     /**
@@ -94,10 +93,7 @@ public class GameOfLife
         // create the grid, of the specified size, that contains Actors
         Grid<Actor> grid = world.getGrid();
         
-        if(bug1.getOccupiedAdjacentLocations >=3)
-        {
-            BoundedGrid.remove(loc1);
-        }
+        // insert magic here...
         
     }
     

@@ -13,7 +13,7 @@ Write a program that plays Conway’s Game of Life. Conway’s Game of Life is a
 	cellular automaton. From Wikipedia:
 
 Personal Requirements:
-Grid will be 10x10
+Grid will be 5x5
 Live Cells are X
 Dead Cells are O
 A pattern of lines will be chosen in code
