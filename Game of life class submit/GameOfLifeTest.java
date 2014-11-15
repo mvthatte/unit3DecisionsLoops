@@ -3,7 +3,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import info.gridworld.actor.Actor;
-
 /**
  * The test class GameOfLifeTest.
  *
@@ -40,7 +39,7 @@ public class GameOfLifeTest
     }
 
     @Test
-    public void testInitialState()
+    public void testInitialState() throws InterruptedException
     {
         /* expected pattern for initial state
          *  (X: alive; -: dead)
